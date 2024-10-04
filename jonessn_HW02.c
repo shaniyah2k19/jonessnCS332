@@ -182,7 +182,7 @@ int main(int argc, char *argv[]){
     return 0; //Return success
 }
 //Resources I used that help me with this
-https://www.learn-c.org/
-https://cboard.cprogramming.com/c-programming/109410-directories-files-using-dirent-h.html
-https://www.tutorialspoint.com/c_standard_library/limits_h.htm
+//https://www.learn-c.org/
+//https://cboard.cprogramming.com/c-programming/109410-directories-files-using-dirent-h.html
+//https://www.tutorialspoint.com/c_standard_library/limits_h.htm
 
