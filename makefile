@@ -1,14 +1,11 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
-TARGET = traverse
+CFLAGS = -Wall -Werror -std=c11
+TARGET = jonessn_HW03
 
 all: $(TARGET)
 
-$(TARGET): jonessn_HW02.c
-	$(CC) $(CFLAGS) -o $(TARGET) jonessn_HW02.c
-
-run: $(TARGET)
-	./$(TARGET)
+$(TARGET): jonessn_HW03.c
+	$(CC) $(CFLAGS) -o $(TARGET) jonessn_HW03.c
 	
 clean:
 	rm -f $(TARGET)

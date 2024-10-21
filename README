@@ -1,0 +1,31 @@
+Overview:
+My program reads a directory, list files, and output information including the size and word count.
+
+Prerequisites:
+To compile and run this program you need:
+- A C complier (gcc)
+- Make utility (Makefile)
+- Access to a compatible environment such as Codespaces, MacOS, or Windows
+
+Instructions for Compiling and Running the Program:
+1. Navigate to source file jonessn_HW03.c
+2. Use the commmand gcc jonessn_HW03.c -o jonessn_HW03
+
+Using Makefile
+1. Make sure the Makefile is in the same directory as your source code.
+2. Run the make command to compile the program: make
+
+Running the Program
+Once the prgram is complied you can run it by using ./jonessn_HW03 <directory_name>
+
+Known Issues:
+1. File Permission Errors: If a file can't be accessed due to permission issues, it will skip and continue with the rest of the directory.
+
+2. Non-Text Files: Program attpems to count words in files that identifies as text files. For non-text files only the size is reported.
+3. Non-Existent or Empty Directories: If the directory doesn't exit it will say Uh Oh 😰 Theren is an Error opening direcotry: No file or directory.
+4. Symlinked Files: If the program run into symbolic links it will be treated by the application as regular files and their size will be reported. Although, symbolic links connecting might cause word counts to malfunction.
+
+Edge Cases Handles:
+1. Handling Large Files: Large files are processed without any memory problems. Even for large files, the calculation of file size is correct.
+2. Special Directory Entries: Since the program doesn't want duplicate file listings, it avoid special entries like . and .. to avoid redundncy in file listings.
+3. Directories within Directories: Subdirectories are not processed repeatedly by the program. When a subfolder is detected, its files are not processed; only its name and size are shown.
