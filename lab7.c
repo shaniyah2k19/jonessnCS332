@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <string.h>
+#include <fcntl.h>
 
 #define MAX_LINE_LENGTH 256
 
@@ -48,7 +49,22 @@ int main(int argc, char **argv){
             return EXIT_FAILURE;
         }
         if (pid == 0){
-            //Split command into two arguments
+            char out_filename[32];
+            char err_filename[32];
+            sprintf(out_filename,"%d.out",getpid());
+            sprintf(err_filename,"%d.err",getpid());
+
+            int out_fd = open(out_filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+            int err_fd = open(err_filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+            if (out_fd == -1 || err_fd == -1){
+                perror("Failed to open output or error file");
+                exit(EXIT_FAILURE);
+            }
+            dup2(out_fd,STDOUT_FILENO);
+            dup2(err_fd,STDERR_FILENO);
+
+            close(out_fd);
+            close(err_fd);
             char *args[MAX_LINE_LENGTH / 2 + 1];
             char *token = strtok(command," ");
             int i = 0;
@@ -60,8 +76,7 @@ int main(int argc, char **argv){
             execvp(args[0],args);
             perror("Exec Failed"); // If exec returns, then it has failed
             exit(EXIT_FAILURE);
-        }
-        else{
+        } else {
             //Parent process
             time_t start_time = time(NULL);
             wait(NULL); // Wait for child to finish
@@ -73,3 +88,4 @@ int main(int argc, char **argv){
     fclose(input_file);
     return EXIT_SUCCESS;
 }
+            
