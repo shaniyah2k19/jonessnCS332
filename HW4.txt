@@ -1,0 +1,20 @@
+How to Compile
+Using a Makefile
+1. Make sure the MakeFile is in the project direcory with the following.
+CC = gcc
+CFLAGS = -pthread -Wall -Wextra
+
+all: process_threads
+
+process_threads: jonessn_HW04.c
+	$(CC) $(CFLAGS) -o process_threads jonessn_HW04.c
+clean:
+	rm -f process_threads
+2. Compile the program by running   'make'.
+3. The process_threads will be created in the direcotry.
+
+Without a Makefile:
+- If you prefer not to use a Makefile
+1. Run this command        gcc -pthread -Wall -Wextra -o process_threads jonessn_HW04.c
+This command will produce the process_threads.
+After complilation use the command           ./process_threads
