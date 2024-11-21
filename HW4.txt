@@ -15,6 +15,7 @@ clean:
 
 Without a Makefile:
 - If you prefer not to use a Makefile
-1. Run this command        gcc -pthread -Wall -Wextra -o process_threads jonessn_HW04.c
+1. Run this command       
+ gcc -o jonessn_HW04 jonessn_HW04.c -pthread 
 This command will produce the process_threads.
 After complilation use the command           ./process_threads
